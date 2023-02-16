@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            background-color: #B1CCCC;
+            border-radius: .5rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: 400;
+        }
+
+        #tod {
+            font-family: 'Courgette', cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="greeting">
+            <span id="tod"></span>
+            <span id="username"></span>
+        </div>
+    </div>
+
+    <script>
+        const username = document.getElementById('username');
+        const tod = document.getElementById('tod');
+        const today = new Date();
+        let greeting = "";
+        let name = "Eldyn";
+
+
+        function getTime() {
+            const hours = today.getHours();
+            if (hours < 11) greeting = "Good Morning, ";
+            else if (hours >= 11 && hours < 17) greeting = "Good Afternoon, ";
+            else if (hours >= 17 && hours < 19) greeting = "Good Evening, ";
+            else greeting = "Good Night, ";
+
+            tod.innerText = greeting;
+            username.innerText = name;
+        }
+
+        getTime();
+    </script>
+</body>
+
+</html>
