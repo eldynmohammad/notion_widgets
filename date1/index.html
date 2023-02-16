@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            padding: 1rem;
+        }
+
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .days {
+            gap: 1rem;
+        }
+
+        .day {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f0f1f3;
+            font-size: 12px;
+            font-weight: 500;
+            color: #AAA;
+        }
+
+        .day-active {
+            background-color: hsl(210, 50%, 56%);
+            color: white;
+        }
+
+        .date {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .date-full {
+            margin-top: .5rem;
+            font-size: 14px;
+            opacity: .75;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container flex-center">
+        <div class="days flex">
+            <div class="day flex-center">M</div>
+            <div class="day flex-center">T</div>
+            <div class="day flex-center">W</div>
+            <div class="day flex-center">T</div>
+            <div class="day flex-center day-active">F</div>
+            <div class="day flex-center">S</div>
+            <div class="day flex-center">S</div>
+        </div>
+        <p class="date">Tuesday</p>
+        <p class="date-full">January 12, 2023</p>
+    </div>
+
+    <script>
+        function dispalyDate(today) {
+            const days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+            const monthNames = [ "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            var dayName = days[ today.getDay() ];
+            var monthName = monthNames[ today.getMonth() ];
+            var date = today.getDate();
+            var year = today.getFullYear();
+            document.getElementById('date').innerHTML = dayName + ", " + monthName + " " + date + " " + year;
+        }
+
+        function displayClock(today) {
+            var hour = padZeros(twelveHour(today.getHours()));
+            var minutes = padZeros(today.getMinutes());
+            var seconds = padZeros(today.getSeconds());
+
+            if (today.getHours() >= 12) {
+                seconds += " pm"
+            }
+            else {
+                seconds += " am"
+            }
+
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('min').innerHTML = minutes;
+            document.getElementById('sec').innerHTML = seconds;
+        }
+
+        function twelveHour(hour) {
+            if (hour > 12) {
+                return hour -= 12
+            } else if (hour === 0) {
+                return hour = 12;
+            } else {
+                return hour
+            }
+        }
+
+        function padZeros(num) {
+            if (num < 10) {
+                num = '0' + num
+            };
+            return num;
+        }
+    </script>
+</body>
+
+</html>
