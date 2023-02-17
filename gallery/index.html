@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *:not(dialog) {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            outline: transparent;
+            border: transparent;
+            background-color: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .container {
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-wrapper {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            columns: 3 250px;
+            gap: 15px;
+        }
+
+        .image {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .modal::backdrop {
+            background-color: rgb(0 0 0 / .75);
+            padding: 1rem;
+        }
+
+        .modal {
+            position: relative;
+            padding: 0;
+            border-radius: 1rem;
+            border: none;
+        }
+
+        .modal-image {
+            width: 100%;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-wrapper"></div>
+        <dialog class="modal" id="modal">
+            <img src="" class="modal-image" id="modalImg" alt="">
+            <button class="close-modal" id="closeModal">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="close-icon">
+                    <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" />
+                </svg>
+            </button>
+        </dialog>
+    </div>
+
+    <script>
+        const images = [ 'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg', 'img-11.jpg', 'img-12.jpg', 'img-13.jpg', 'img-14.jpg', 'img-15.jpg', 'img-16.jpg' ]
+        const wrapper = document.querySelector('.image-wrapper');
+        const modal = document.querySelector('#modal');
+        const modalImg = document.querySelector('#modalImg');
+        const closeModal = document.querySelector('#closeModal');
+
+        images.forEach(image => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            const img = document.createElement('img');
+            img.classList.add('image');
+            img.src = `/images/${image}`;
+            btn.appendChild(img);
+            wrapper.appendChild(btn);
+
+            btn.addEventListener('click', () => {
+                modalImg.src = img.src;
+                modal.showModal();
+            })
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        })
+    </script>
+</body>
+
+</html>
