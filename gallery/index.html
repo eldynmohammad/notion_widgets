@@ -35,13 +35,13 @@
         .image-wrapper {
             padding-left: 1rem;
             padding-right: 1rem;
-            columns: 3 250px;
-            gap: 15px;
+            columns: 3 40px;
+            gap: 12px;
         }
 
         .image {
-            margin-bottom: 15px;
-            border-radius: 5px;
+            margin-bottom: 12px;
+            /* border-radius: 5px; */
             width: 100%;
         }
 
@@ -97,7 +97,7 @@
     </div>
 
     <script>
-        const images = [ 'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg', 'img-11.jpg', 'img-12.jpg', 'img-13.jpg', 'img-14.jpg', 'img-15.jpg', 'img-16.jpg' ]
+        const images = [ 'img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg', 'img-7.jpg', 'img-8.jpg', 'img-9.jpg', 'img-10.jpg', 'img-11.jpg', 'img-12.jpg', 'img-13.jpg', 'img-14.jpg' ]
         const wrapper = document.querySelector('.image-wrapper');
         const modal = document.querySelector('#modal');
         const modalImg = document.querySelector('#modalImg');
@@ -108,7 +108,7 @@
             btn.type = 'button';
             const img = document.createElement('img');
             img.classList.add('image');
-            img.src = `../gallery/images/${image}`;
+            img.src = `../images/${image}`;
             btn.appendChild(img);
             wrapper.appendChild(btn);
 
